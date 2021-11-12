@@ -13,6 +13,9 @@ const App = () => {
     }
     const addItem = (event) => {
         event.preventDefault();
+        if(item === ""){
+            return alert("Type a Task");
+        }
         setItems((preValues) => {
             return [
                 ...preValues,
