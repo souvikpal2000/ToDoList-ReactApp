@@ -19,7 +19,10 @@ const App = () => {
         setItems((preValues) => {
             return [
                 ...preValues,
-                item
+                {
+                    itemName: item,
+                    textDecoration: "none"
+                }
             ]
         });
         setItem("");
@@ -35,6 +38,17 @@ const App = () => {
         })
     }
 
+    const doneItem = (event) => {
+        const id = parseInt(event.target.id);
+        const newArr = [...items];
+        if(newArr[id].textDecoration === "none"){
+            newArr[id].textDecoration = "line-through"
+        }else{
+            newArr[id].textDecoration = "none";
+        }
+        setItems(newArr);
+    }
+
     return(
         <React.Fragment>
             <div className="container">
@@ -42,7 +56,7 @@ const App = () => {
                 <AddTask task={item} inputFunc={typeItem} buttonFunc={addItem} />
                 <div className="list">
                     {items.map((value, index) => {
-                        return (<Task key={index} id={index} item={value} deleteFunc={deleteItem}/>);
+                        return (<Task key={index} id={index} item={value.itemName} itemStyle={value.textDecoration} deleteFunc={deleteItem} doneFunc={doneItem}/>);
                     })}
                 </div>
             </div>

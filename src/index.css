@@ -73,6 +73,9 @@ i{
 i:hover{
     color: red;
 }
+.fa-minus-circle:hover{
+    color: orange;
+}
 @media (max-width: 768px){
     .container{
         min-width: 20rem;
